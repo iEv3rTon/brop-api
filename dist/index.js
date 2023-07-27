@@ -6,10 +6,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
+
+import routes from "./src/routes"
+    
 app.get('/', (_req, res) => {
     return res.send('Express Typescript on Vercel');
 });
 app.get('/ping', (_req, res) => {
+    return res.send('pong 🏓');
+});
+app.get('/teste', (_req, res) => {
     return res.send('pong 🏓');
 });
 app.listen(port, () => {
