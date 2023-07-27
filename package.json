@@ -8,6 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "vercel-build": "npx prisma migrate deploy"
   },
+  "engines": {
+    "node": "14.x"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
