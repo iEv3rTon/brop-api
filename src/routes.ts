@@ -4,6 +4,7 @@ import { FindIdPlayerController } from "./controllers/FindIdPlayerController";
 import { FindNamePlayerController } from "./controllers/FindNamePlayerController";
 import { addPlayerController } from "./controllers/addPlayerController";
 import { FeedController } from "./controllers/FeedController";
+import { home } from "./controllers/Home.ts";
 
 const router = Router();
 
@@ -12,6 +13,7 @@ const findIdPlayer = new FindIdPlayerController();
 const findNamePlayer = new FindNamePlayerController();
 const addPlayer = new addPlayerController();
 const Feed = new FeedController();
+const home = new home();
 
 router.post("/player/:id", createPlayer.handle);
 router.post("/add", addPlayer.handle);
@@ -19,5 +21,6 @@ router.post("/add", addPlayer.handle);
 router.get("/search/:id", findIdPlayer.handle);
 router.get("/search-name/:name", findNamePlayer.handle);
 router.get("/feed", Feed.handle);
+router.get("/", home.handle)
 
 export { router };
