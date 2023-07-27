@@ -1,21 +1,24 @@
-import express from "express";
-import { router } from "./routes";
+import express, { Request, Response } from 'express'
+import { runDb } from './repositories/db';
 
-const app = express();
+const app = express()
+const port = process.env.PORT || 5000
 
-app.use(express.json());
-app.use(router);
-app.get('/porra', (_req: Request, res: Response) => {
-	return res.send('Express Typescript on Vercel')
-})
-app.get('/', (_req: Request, res: Response) => {
-	return res.send('Express Typescript on Vercel')
-})
+const parserMiddleware = express.json()
+app.use(parserMiddleware)
 
-app.get('/ping', (_req: Request, res: Response) => {
-	return res.send('pong 🏓')
+
+app.get('/', (req: Request, res: Response) => {
+  res.send('Porra')
 })
 
+app.use('/brop', router)
 
-const port = process.env.PORT || 9001;
-app.listen(port, () => console.log(`Listening to port ${port}`))
+const startApp = async () => {
+  await runDb()
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+  })
+}
+
+startApp()
