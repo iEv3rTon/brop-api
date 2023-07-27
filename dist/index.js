@@ -15,9 +15,8 @@ app.get('/', (_req, res) => {
 app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
 });
-app.get('/teste', (_req, res) => {
-    return res.send('pong 🏓');
-});
+app.use(routes);
+
 app.listen(port, () => {
     return console.log(`Server is listening on ${port}`);
 });
