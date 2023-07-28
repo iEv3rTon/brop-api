@@ -26,6 +26,6 @@ export class FeedController {
             },
         })
 
-        response.json(User)
+        response.status(200).json(User)
         }
     }

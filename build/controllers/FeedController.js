@@ -31,7 +31,7 @@ class FeedController {
                     updatedAt: orderBy,
                 },
             });
-            response.json(User);
+            response.status(200).json(User);
         });
     }
 }

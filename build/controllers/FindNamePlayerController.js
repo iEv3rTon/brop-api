@@ -21,7 +21,7 @@ class FindNamePlayerController {
                 },
             });
             console.log(find);
-            return response.json(find);
+            return response.status(200).json(find);
         });
     }
 }

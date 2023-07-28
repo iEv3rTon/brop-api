@@ -29,10 +29,10 @@ class addPlayerController {
                     },
                 });
                 console.log(player);
-                return response.json(player);
+                return response.status(200).json(player);
             }
             catch (error) {
-                return response.json({ error: `Player with ID ${playerid} already exist in the database` });
+                return response.status(200).json({ error: `Player with ID ${playerid} already exist in the database` });
             }
         });
     }

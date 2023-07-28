@@ -7,6 +7,7 @@ const FindIdPlayerController_1 = require("./controllers/FindIdPlayerController")
 const FindNamePlayerController_1 = require("./controllers/FindNamePlayerController");
 const addPlayerController_1 = require("./controllers/addPlayerController");
 const FeedController_1 = require("./controllers/FeedController");
+const home_1 = require("./controllers/home");
 const router = (0, express_1.Router)();
 exports.router = router;
 const createPlayer = new CreatePlayerController_1.CreatePlayerController();
@@ -14,7 +15,7 @@ const findIdPlayer = new FindIdPlayerController_1.FindIdPlayerController();
 const findNamePlayer = new FindNamePlayerController_1.FindNamePlayerController();
 const addPlayer = new addPlayerController_1.addPlayerController();
 const Feed = new FeedController_1.FeedController();
-const home = new home();
+const home = new home_1.Home();
 router.post("/player/:id", createPlayer.handle);
 router.post("/add", addPlayer.handle);
 router.get("/search/:id", findIdPlayer.handle);

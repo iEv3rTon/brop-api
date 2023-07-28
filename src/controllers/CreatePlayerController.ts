@@ -30,7 +30,7 @@ export class CreatePlayerController {
             })
             console.log(Updateplayer)
 
-            return response.json(Updateplayer);
+            return response.status(200).json(Updateplayer);
 
         } catch (error) {
             const player = await prisma.player.create({
@@ -48,7 +48,7 @@ export class CreatePlayerController {
     
             console.log(player)
     
-            return response.json(player);
+            return response.status(200).json(player);
             //return response.json({ error: `Post with ID ${playerid} does not exist in the database`});
         }
 
