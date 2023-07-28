@@ -21,4 +21,4 @@ router.post("/add", addPlayer.handle);
 router.get("/search/:id", findIdPlayer.handle);
 router.get("/search-name/:name", findNamePlayer.handle);
 router.get("/feed", Feed.handle);
-router.get("/", home.handle);
+//router.get("/", home.handle);
