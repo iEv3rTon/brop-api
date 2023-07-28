@@ -2,13 +2,18 @@
   "name": "brop-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "npx tsc",
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_module src/index.ts",
     "start": "npm run build && node ./build/index.js",
     "vercel-build": "npx prisma migrate deploy"
   },
+  "pre-commit": [
+		"ts.check",
+		"build",
+		"add-build"
+	],
   "keywords": [],
   "author": "",
   "license": "ISC",
