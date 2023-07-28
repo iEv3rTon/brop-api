@@ -15,7 +15,7 @@ const findIdPlayer = new FindIdPlayerController_1.FindIdPlayerController();
 const findNamePlayer = new FindNamePlayerController_1.FindNamePlayerController();
 const addPlayer = new addPlayerController_1.addPlayerController();
 const Feed = new FeedController_1.FeedController();
-const home = new home_1.Home();
+//const home = new home_1.Home();
 router.post("/player/:id", createPlayer.handle);
 router.post("/add", addPlayer.handle);
 router.get("/search/:id", findIdPlayer.handle);
