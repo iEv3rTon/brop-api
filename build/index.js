@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
 });
 //npm prisma generate && next build
 app.use(express_1.default.json());
-app.use(routes_1.router);
+//app.use(routes_1.router);
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running on ${port}`);
 });
