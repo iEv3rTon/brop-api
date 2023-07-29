@@ -9,30 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FeedController = void 0;
+exports.PlayerController = void 0;
 const prismaClient_1 = require("./database/prismaClient");
-class FeedController {
+class PlayerController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { searchString, skip, take, orderBy } = request.query;
-            const or = searchString
-                ? {
-                    OR: [
-                        { name: { contains: searchString } },
-                        //{ playerid: { contains: searchString as string } },
-                    ],
-                }
-                : {};
-            const User = yield prismaClient_1.prisma.player.findMany({
-                where: Object.assign({}, or),
-                take: Number(take) || undefined,
-                skip: Number(skip) || undefined,
-                orderBy: {
-                    rank: orderBy,
-                },
-            });
-            response.status(200).json(User);
+            const players = yield prismaClient_1.prisma.player.findMany();
+            return response.status(200).json(players);
         });
     }
 }
-exports.FeedController = FeedController;
+exports.PlayerController = PlayerController;

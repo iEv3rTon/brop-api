@@ -17,44 +17,50 @@ class CreatePlayerController {
             const { id } = request.params;
             const { playerid, name, rank, totalpixels, dailyrank, dailypixels, br, data } = request.body;
             try {
-                const CreatePlayer = yield prismaClient_1.prisma.player.findUnique({
+                const find = yield prismaClient_1.prisma.player.findUnique({
                     where: {
-                        playerid: Number(id),
+                        playerid: Number(id)
                     },
                 });
-                const Updateplayer = yield prismaClient_1.prisma.player.update({
-                    where: {
-                        playerid: Number(id),
-                    },
-                    data: {
-                        name,
-                        rank,
-                        totalpixels,
-                        dailypixels,
-                        dailyrank,
-                        br,
-                        data,
-                    }
-                });
-                console.log(Updateplayer);
-                return response.status(200).json(Updateplayer);
+                if (find === null) {
+                    const NewPlayer = yield prismaClient_1.prisma.player.create({
+                        data: {
+                            playerid,
+                            name,
+                            rank,
+                            totalpixels,
+                            dailypixels,
+                            dailyrank,
+                            br,
+                            data,
+                        },
+                    });
+                    console.log("New playerID" + playerid);
+                    return response.status(200).json(NewPlayer);
+                }
+                else {
+                    const Updateplayer = yield prismaClient_1.prisma.player.update({
+                        where: {
+                            playerid: Number(id),
+                        },
+                        data: {
+                            name,
+                            rank,
+                            totalpixels,
+                            dailypixels,
+                            dailyrank,
+                            br,
+                            data,
+                        }
+                    });
+                    console.log("Update Player" + Updateplayer);
+                    return response.status(200).json(Updateplayer);
+                }
             }
             catch (error) {
-                const player = yield prismaClient_1.prisma.player.create({
-                    data: {
-                        playerid,
-                        name,
-                        rank,
-                        totalpixels,
-                        dailypixels,
-                        dailyrank,
-                        br,
-                        data,
-                    },
-                });
-                console.log(player);
-                return response.status(200).json(player);
-                //return response.json({ error: `Post with ID ${playerid} does not exist in the database`});
+                //return response.status(404).json();
+                console.log(error);
+                return response.status(404).json(error);
             }
         });
     }

@@ -7,12 +7,28 @@ export class CreatePlayerController {
         const { playerid, name, rank, totalpixels, dailyrank, dailypixels, br, data } = request.body;
 
         try{
-            const CreatePlayer = await prisma.player.findUnique({
+            const find = await prisma.player.findUnique({
                 where: {
-                    playerid: Number(id),
+                    playerid: Number(id)
                 },
             })
-
+            if (find === null) {
+                const NewPlayer = await prisma.player.create({
+                    data: {
+                        playerid,
+                        name,
+                        rank,
+                        totalpixels,
+                        dailypixels,
+                        dailyrank,
+                        br,
+                        data,
+                    },
+                })
+    
+                console.log("New playerID" + playerid)                
+                return response.status(200).json(NewPlayer);
+            } else {
             const Updateplayer = await prisma.player.update({
                 where: {
                     playerid: Number(id),
@@ -28,28 +44,14 @@ export class CreatePlayerController {
                 }
 
             })
-            console.log(Updateplayer)
-
+            console.log("Update Player" + Updateplayer)
             return response.status(200).json(Updateplayer);
+        }
 
         } catch (error) {
-            const player = await prisma.player.create({
-                data: {
-                    playerid,
-                    name,
-                    rank,
-                    totalpixels,
-                    dailypixels,
-                    dailyrank,
-                    br,
-                    data,
-                },
-            })
-    
-            console.log(player)
-    
-            return response.status(200).json(player);
-            //return response.json({ error: `Post with ID ${playerid} does not exist in the database`});
+            //return response.status(404).json();
+            console.log(error)
+            return response.status(404).json(error);
         }
 
     }

@@ -14,5 +14,5 @@ app.get("/", (req, res) => {
 app.use(express_1.default.json());
 app.use(routes_1.router);
 app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running on ${port}`);
+    console.log(`⚡️[server]: Server is running on ${port}.`);
 });
