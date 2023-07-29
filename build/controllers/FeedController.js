@@ -28,7 +28,7 @@ class FeedController {
                 take: Number(take) || undefined,
                 skip: Number(skip) || undefined,
                 orderBy: {
-                    rank: orderBy,
+                    totalpixels: orderBy,
                 },
             });
             response.status(200).json(User);

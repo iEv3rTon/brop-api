@@ -15,13 +15,18 @@ class FindNamePlayerController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const { name } = request.params;
-            const find = yield prismaClient_1.prisma.player.findMany({
-                where: {
-                    name: name
-                },
-            });
-            console.log(find);
-            return response.status(200).json(find);
+            try {
+                const find = yield prismaClient_1.prisma.player.findMany({
+                    where: {
+                        name: name
+                    },
+                });
+                console.log(find);
+                return response.status(200).json(find);
+            }
+            catch (error) {
+                return response.status(200).json({ error: `Player with Name: **${name}** not exist in the database` });
+            }
         });
     }
 }

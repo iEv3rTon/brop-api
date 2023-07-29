@@ -15,13 +15,18 @@ class FindIdPlayerController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = request.params;
-            const find = yield prismaClient_1.prisma.player.findUnique({
-                where: {
-                    playerid: Number(id)
-                },
-            });
-            console.log(find);
-            return response.status(200).json(find);
+            try {
+                const find = yield prismaClient_1.prisma.player.findUnique({
+                    where: {
+                        playerid: Number(id)
+                    },
+                });
+                console.log(find);
+                return response.status(200).json(find);
+            }
+            catch (error) {
+                return response.status(200).json({ error: `Player with ID **${id}** not exist in the database` });
+            }
         });
     }
 }

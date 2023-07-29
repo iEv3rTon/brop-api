@@ -22,7 +22,7 @@ export class FeedController {
             take: Number(take) || undefined,
             skip: Number(skip) || undefined,
             orderBy: {
-            rank: orderBy as Prisma.SortOrder,
+            totalpixels: orderBy as Prisma.SortOrder,
             },
         })
 

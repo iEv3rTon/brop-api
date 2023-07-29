@@ -53,7 +53,7 @@ class CreatePlayerController {
                             data,
                         }
                     });
-                    console.log("Update Player" + Updateplayer);
+                    console.log("Update Player ID: " + playerid);
                     return response.status(200).json(Updateplayer);
                 }
             }
