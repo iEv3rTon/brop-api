@@ -11,6 +11,7 @@ import { EditDiscordController } from "./controllers/discord/EditDiscordControll
 import { CreateDiscordController } from "./controllers/discord/CreateDiscordController";
 import { DiscordController } from "./controllers/discord/DiscordController";
 import { FeedDiscordController } from "./controllers/discord/FeedDiscordController";
+import { DiscordDeleteController } from "./controllers/discord/DiscordDeleteController";
 
 const router = Router();
 
@@ -26,21 +27,21 @@ const getDiscordID = new DiscordController();
 const EditDiscord = new EditDiscordController();
 const CreateDiscord = new CreateDiscordController()
 const FeedDiscord = new FeedDiscordController();
+const DiscordDelete = new DiscordDeleteController
 
 router.post("/player/:id", createPlayer.handle);
 router.post("/add", addPlayer.handle);
-
 router.get("/search/:id", findIdPlayer.handle);
 router.get("/search-name/:name", findNamePlayer.handle);
 router.get("/feed", Feed.handle);
 router.get("/player", players.handle);
-
-router.delete("/delete", Delete.handle);
+router.delete("/delete/:id", Delete.handle);
 
 // discord ID
 router.post("/discord-create", CreateDiscord.handle);
 router.post("/discord-edit", EditDiscord.handle)
 router.get("/discordid/:id", getDiscordID.handle)
 router.get("/discordid", FeedDiscord.handle)
+router.delete("/discord-delete/:id", DiscordDelete.handle);
 
 export { router };

@@ -9,16 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteController = void 0;
-const prismaClient_1 = require("./database/prismaClient");
-class DeleteController {
+exports.DiscordDeleteController = void 0;
+const prismaClient_1 = require("../database/prismaClient");
+class DiscordDeleteController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = request.params;
             try {
-                const user = yield prismaClient_1.prisma.player.delete({
+                const user = yield prismaClient_1.prisma.discord.delete({
                     where: {
-                        playerid: Number(id),
+                        playerid: id,
                     },
                 });
                 return response.status(200).json(`User is Deleted: ${user}`);
@@ -29,4 +29,4 @@ class DeleteController {
         });
     }
 }
-exports.DeleteController = DeleteController;
+exports.DiscordDeleteController = DiscordDeleteController;
