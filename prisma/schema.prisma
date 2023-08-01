@@ -7,7 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Player {
   playerid  Int @id
   name      String
@@ -23,5 +22,12 @@ model Player {
   published Boolean  @default(false)
 
   @@map("players")
+}
+
+model Discord {
+  playerid  String @unique
+  discordid   String @unique
+  
+  @@map("discord")
 }
 
