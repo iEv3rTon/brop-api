@@ -9,6 +9,11 @@ const addPlayerController_1 = require("./controllers/addPlayerController");
 const FeedController_1 = require("./controllers/FeedController");
 const PlayerController_1 = require("./controllers/PlayerController");
 const DeleteController_1 = require("./controllers/DeleteController");
+// discord ID
+const EditDiscordController_1 = require("./controllers/discord/EditDiscordController");
+const CreateDiscordController_1 = require("./controllers/discord/CreateDiscordController");
+const DiscordController_1 = require("./controllers/discord/DiscordController");
+const FeedDiscordController_1 = require("./controllers/discord/FeedDiscordController");
 const router = (0, express_1.Router)();
 exports.router = router;
 const createPlayer = new CreatePlayerController_1.CreatePlayerController();
@@ -18,6 +23,11 @@ const addPlayer = new addPlayerController_1.addPlayerController();
 const Feed = new FeedController_1.FeedController();
 const players = new PlayerController_1.PlayerController();
 const Delete = new DeleteController_1.DeleteController();
+// discord ID
+const getDiscordID = new DiscordController_1.DiscordController();
+const EditDiscord = new EditDiscordController_1.EditDiscordController();
+const CreateDiscord = new CreateDiscordController_1.CreateDiscordController();
+const FeedDiscord = new FeedDiscordController_1.FeedDiscordController();
 router.post("/player/:id", createPlayer.handle);
 router.post("/add", addPlayer.handle);
 router.get("/search/:id", findIdPlayer.handle);
@@ -25,3 +35,8 @@ router.get("/search-name/:name", findNamePlayer.handle);
 router.get("/feed", Feed.handle);
 router.get("/player", players.handle);
 router.delete("/delete", Delete.handle);
+// discord ID
+router.post("/discord-create", CreateDiscord.handle);
+router.post("/discord-edit", EditDiscord.handle);
+router.get("/discordid/:id", getDiscordID.handle);
+router.get("/discordid", FeedDiscord.handle);

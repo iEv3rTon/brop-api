@@ -32,7 +32,7 @@ class addPlayerController {
                 return response.status(200).json(player);
             }
             catch (error) {
-                return response.status(200).json({ error: `Player with ID ${playerid} already exist in the database` });
+                return response.status(404).json({ error: `Player with ID ${playerid} already exist in the database` });
             }
         });
     }

@@ -25,7 +25,7 @@ class FindNamePlayerController {
                 return response.status(200).json(find);
             }
             catch (error) {
-                return response.status(200).json({ error: `Player with Name: **${name}** not exist in the database` });
+                return response.status(404).json({ error: `Player with Name: **${name}** not exist in the database` });
             }
         });
     }

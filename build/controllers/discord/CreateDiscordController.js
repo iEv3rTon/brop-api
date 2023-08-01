@@ -9,24 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DeleteController = void 0;
-const prismaClient_1 = require("./database/prismaClient");
-class DeleteController {
+exports.CreateDiscordController = void 0;
+const prismaClient_1 = require("../database/prismaClient");
+class CreateDiscordController {
     handle(request, response) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = request.params;
+            const { playerid, discordid } = request.body;
             try {
-                const user = yield prismaClient_1.prisma.player.delete({
-                    where: {
-                        playerid: Number(id),
+                const NewPlayer = yield prismaClient_1.prisma.discord.create({
+                    data: {
+                        playerid,
+                        discordid,
                     },
                 });
-                return response.status(200).json(user);
+                console.log("New discordID: " + playerid);
+                return response.status(200).json(NewPlayer);
             }
             catch (error) {
-                return response.status(404).json({ error: `Player with ID ${id} already exist in the database` });
+                return response.status(404).json({ error: `Player with ID ${playerid} already exist in the database` });
             }
         });
     }
 }
-exports.DeleteController = DeleteController;
+exports.CreateDiscordController = CreateDiscordController;
