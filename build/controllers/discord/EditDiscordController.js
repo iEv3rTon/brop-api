@@ -24,7 +24,7 @@ class EditDiscordController {
                         playerid,
                     }
                 });
-                console.log("Update discordID" + playerid);
+                console.log("Update discordID: " + playerid);
                 return response.status(200).json(Updateplayer);
             }
             catch (error) {

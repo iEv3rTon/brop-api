@@ -26,7 +26,7 @@ export class CreatePlayerController {
                     },
                 })
     
-                console.log("New playerID" + playerid)                
+                console.log("New playerID: " + playerid)                
                 return response.status(200).json(NewPlayer);
             } else {
             const Updateplayer = await prisma.player.update({
@@ -44,7 +44,7 @@ export class CreatePlayerController {
                 }
 
             })
-            console.log("Update Player ID: " + playerid)
+            console.log("Update PlayerID: " + playerid)
             return response.status(200).json(Updateplayer);
         }
 

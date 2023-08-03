@@ -36,7 +36,7 @@ router.get("/search/:id", findIdPlayer.handle);
 router.get("/search-name/:name", findNamePlayer.handle);
 router.get("/feed", Feed.handle);
 router.get("/player", players.handle);
-router.delete("/delete/:id", Delete.handle);
+//router.delete("/delete/:id", Delete.handle);
 // discord ID
 router.post("/discord-create", CreateDiscord.handle);
 router.post("/discord-edit", EditDiscord.handle);

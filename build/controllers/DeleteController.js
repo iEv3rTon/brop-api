@@ -21,7 +21,8 @@ class DeleteController {
                         playerid: Number(id),
                     },
                 });
-                return response.status(200).json(`User is Deleted: ${user}`);
+                console.log(`User is Deleted ID: ${id}`);
+                return response.status(200).json(`User is Deleted ID: ${id}`);
             }
             catch (error) {
                 return response.status(404).json({ error: `Player with ID ${id} already exist in the database` });

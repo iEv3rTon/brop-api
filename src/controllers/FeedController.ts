@@ -9,7 +9,7 @@ export class FeedController {
         const or: Prisma.PlayerWhereInput = searchString
             ? {
                 OR: [
-                { name: { contains: searchString as string } },
+                { br: { contains: searchString as string } },
                 //{ playerid: { contains: searchString as string } },
                 ],
             }

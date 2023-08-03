@@ -18,7 +18,7 @@ class FeedController {
             const or = searchString
                 ? {
                     OR: [
-                        { name: { contains: searchString } },
+                        { br: { contains: searchString } },
                         //{ playerid: { contains: searchString as string } },
                     ],
                 }

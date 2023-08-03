@@ -35,7 +35,7 @@ class CreatePlayerController {
                             data,
                         },
                     });
-                    console.log("New playerID" + playerid);
+                    console.log("New playerID: " + playerid);
                     return response.status(200).json(NewPlayer);
                 }
                 else {
@@ -53,7 +53,7 @@ class CreatePlayerController {
                             data,
                         }
                     });
-                    console.log("Update Player ID: " + playerid);
+                    console.log("Update PlayerID: " + playerid);
                     return response.status(200).json(Updateplayer);
                 }
             }
