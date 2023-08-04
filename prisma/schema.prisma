@@ -8,26 +8,24 @@ datasource db {
 }
 
 model Player {
-  playerid  Int @id
-  name      String
-  rank      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  published   Boolean  @default(false)
+  playerid    Int      @id
+  name        String
+  rank        Int
   totalpixels String
-  dailyrank String
+  dailyrank   String
   dailypixels String
-  br        String
-  data      String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
+  br          String
+  data        String
 
   @@map("players")
 }
 
 model Discord {
   playerid  String @unique
-  discordid   String @unique
-  
+  discordid String @unique
+
   @@map("discord")
 }
-
